@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script language='javascript' type='text/javascript'>
+		    function addToTable() {
+		        // create new row
+                // add row to table
+				table = document.getElementById('myTable');
+				newrow = table.insertRow(table.rows.length-1);
+                
+                // create all data of the new row
+                stunumber = document.createElement("td");
+				stunumber.innerHTML = document.getElementById('studentNumber').value;
+				
+                firstName = document.createElement("td");
+				firstName.innerHTML = document.getElementById('firstName').value;
+				
+                lastName = document.createElement("td");
+				lastName.innerHTML = document.getElementById('lastName').value;
+				
+                age = document.createElement("td");
+				age.innerHTML = document.getElementById('age').value;
+
+                // append row data to create a row
+				newrow.appendChild(stunumber);
+				newrow.appendChild(firstName);
+				newrow.appendChild(lastName);
+				newrow.appendChild(age);
+			}
+		</script>
+        <style type='text/css'>
+            * {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            #myTable thead {
+                background-color: lightgreen;
+            }
+            #myTable > tbody td {
+                background-color: lightblue;
+            }
+        </style>
+	</head>
+	<body>
+		<table id='myTable'>
+            <thead>
+                <tr>
+                    <td>Student Number</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td colspan="2">Age</td>
+                </tr>
+			</thead>
+			<tbody class="tablebody">
+                <tr>
+                    <td>90909090</td>
+                    <td>Steven</td>
+                    <td>Wilson</td>
+                    <td colspan="2">46</td>
+                </tr>
+                <tr>
+                    <td><input type="text" id='studentNumber' /></td>
+                    <td><input type="text" id='firstName' /></td>
+                    <td><input type="text" id='lastName' /></td>
+                    <td><input type="text" id='age' /></td>
+                    <td><input type="button" value="Add" onclick="addToTable()"/></td>
+                </tr>
+            </tbody>
+		</table>
+	</body>
+</html>
