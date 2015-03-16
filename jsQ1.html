@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body>
+		<input type="text">
+		<script>
+			var field = document.querySelector("input");
+			function changeCheck(event) {
+			    var source = event.target;
+			    sw = false;
+                for(i=0; i < source.value.length; i++) {
+                    c = source.value[i];
+                    if(c == 'A' || c == 'U' || c == 'O' || c == 'C' || c == 'N')
+                        sw = true;
+                }
+                if(sw == true)
+                {
+                    alert("Characters 'A', 'U', 'O', 'C' and 'N' are invalid");
+                    newstr = "";
+                    for (i = 0; i < source.value.length; i++) {
+                        c = source.value[i];
+                        if (!(c == 'A' || c == 'U' || c == 'O' || c == 'C' || c == 'N'))
+                            newstr += c;
+                    }
+                    source.value = newstr;
+                }
+            }
+            field.addEventListener("input", changeCheck);
+        </script>
+	</body>
+</html>
