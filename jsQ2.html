@@ -1,0 +1,57 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>jsQ2</title>
+            <style>
+                #box {
+                    background-color: red;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 50px;
+                    width: 50px;
+                }
+            </style>
+            <script>
+                var timeInterval = 5000;
+                var startTime = null;
+                var box = null;
+
+                function startAnimation() {
+                    box = document.getElementById("box");
+                    window.requestAnimationFrame(nextStep);
+                }
+
+                function nextStep(curTime) {
+                    if( startTime === null ) startTime = curTime;
+                    var curTimeRatio = (curTime - startTime) / timeInterval;
+                    box.style.left = Math.min( window.innerWidth - box.offsetWidth, curTimeRatio * window.innerWidth ) + "px";
+                    box.style.top = Math.min( window.innerHeight - box.offsetHeight, curTimeRatio * window.innerHeight ) + "px";
+                    if( curTime - startTime < timeInterval )
+                        window.requestAnimationFrame(nextStep);
+                }
+            </script>
+        </head>
+        <body>
+            <div id="box" onclick="startAnimation()"></div>
+
+        </body>
+    </html>
+
+    <!--
+        <script>
+                    var start = null;
+                    var element = document.getElementById("box");
+
+                    function step(timestamp) {
+                      if (!start) start = timestamp;
+                      var progress = timestamp - start;
+                      element.style.left = Math.min(progress/10, 200) + "px";
+                      if (progress < 2000) {
+                        window.requestAnimationFrame(step);
+                      }
+                    }
+
+                    window.requestAnimationFrame(step);
+                </script>
+    --->
